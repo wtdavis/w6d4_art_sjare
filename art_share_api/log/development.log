@@ -876,3 +876,82 @@ Processing by ArtworksharesController#create as */*
 Completed 200 OK in 66ms (Views: 1.0ms | ActiveRecord: 24.1ms | Allocations: 20995)
 
 
+  [1m[36mArtworkShare Load (0.2ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+  [1m[36mArtworkShare Load (0.3ms)[0m  [1m[34mSELECT "artwork_shares".* FROM "artwork_shares"[0m
+Started POST "/artworkshares?artworkshares" for ::1 at 2023-02-16 17:21:05 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArtworksharesController#create as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"1", "viewer_id"=>"2"}, "artworkshares"=>nil}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mArtworkShare Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artist_id" IS NULL LIMIT $2[0m  [["viewer_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 5.2ms | Allocations: 9374)
+
+
+
+ActiveRecord::StatementInvalid - PG::UndefinedColumn: ERROR:  column artwork_shares.artist_id does not exist
+LINE 1: ...ares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_s...
+                                                             ^:
+  app/controllers/artworkshares_controller.rb:4:in `create'
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 17:22:18 -0500
+Processing by ArtworksharesController#create as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"1", "viewer_id"=>"2"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mArtworkShare Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artist_id" IS NULL LIMIT $2[0m  [["viewer_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.4ms | Allocations: 2271)
+
+
+
+ActiveRecord::StatementInvalid - PG::UndefinedColumn: ERROR:  column artwork_shares.artist_id does not exist
+LINE 1: ...ares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_s...
+                                                             ^:
+  app/controllers/artworkshares_controller.rb:4:in `create'
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Jill"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Justin"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Rod"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Allison"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Rico"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Mona Lisa"], ["artist_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Mona Pizza"], ["artist_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mArtwork Create (0.3ms)[0m  [1m[32mINSERT INTO "artworks" ("title", "img_url", "artist_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Mona Pizza"], ["img_url", "moremonalisapizza.com"], ["artist_id", 2], ["created_at", "2023-02-16 22:22:56.946992"], ["updated_at", "2023-02-16 22:22:56.946992"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Hot Rod"], ["artist_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "TeaPot"], ["artist_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtwork Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "artworks" WHERE "artworks"."title" = $1 AND "artworks"."artist_id" = $2 LIMIT $3[0m  [["title", "Kahoot"], ["artist_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArtworkShare Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "artwork_shares" WHERE "artwork_shares"."viewer_id" = $1 AND "artwork_shares"."artist_id" IS NULL LIMIT $2[0m  [["viewer_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m

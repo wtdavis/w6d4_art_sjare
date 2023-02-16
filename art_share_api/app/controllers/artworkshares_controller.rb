@@ -11,4 +11,13 @@ class ArtworksharesController < ApplicationController
 	def artwork_share_params
 		params.require(:artwork_share).permit(:artwork_id, :viewer_id)
 	end
+
+	def destroy
+		@artwork_share = ArtworkShare.find(params[:id])
+		if @artwork_share.destroy
+			render json: "Hulk Smash friendships"
+		else
+			@artwork_share.errors.full_messages 
+		end
+	end
 end
