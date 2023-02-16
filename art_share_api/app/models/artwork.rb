@@ -13,7 +13,7 @@ class Artwork < ApplicationRecord
 validates :title, uniqueness: { scope: :author_id, message: "author has work by this title already"}
 
 	belongs_to :artist, 
-		class_name: :user, 
+		class_name: :User, 
 		foreign_key: :artist_id
 
 		
