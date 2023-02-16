@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 		render json: @user
 	end
 
+	##must check for unique title/author_id combo
 
-
+	
 end
