@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     #let's go!
     def index
-        render plain: "This is text"
+        render json: User.all
     end
 
 	def create
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:name, :email)
+		params.require(:user).permit(:name)
 	end
 
 	def show
@@ -35,6 +35,15 @@ class UsersController < ApplicationController
 		end
 		@user.save
 		render json: @user
+	end
+
+	def destroy
+		@user = User.find(params[:id])
+		if @user.destroy
+			render json: "Hulk Smash"
+		else
+			@user.errors.full_messages 
+		end
 	end
 
 	##must check for unique title/author_id combo
