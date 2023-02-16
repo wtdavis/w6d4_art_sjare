@@ -804,3 +804,75 @@ Started DELETE "/users/1/artworks" for ::1 at 2023-02-16 16:39:05 -0500
   
 ActionController::RoutingError (No route matches [DELETE] "/users/1/artworks"):
   
+Started POST "/artwork_shares" for ::1 at 2023-02-16 16:55:22 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActionController::RoutingError - uninitialized constant ArtworkSharesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  ArtworksController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 16:56:10 -0500
+
+ActionController::RoutingError - uninitialized constant ArtworksharesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  ArtworksController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 16:56:42 -0500
+
+ActionController::RoutingError - uninitialized constant ArtworksharesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  ArtworksController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 16:57:26 -0500
+
+ActionController::RoutingError - uninitialized constant ArtworksharesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  ArtworksController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 16:58:06 -0500
+
+ActionController::RoutingError - uninitialized constant ArtworksharesController
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+Did you mean?  ArtworksController
+            raise MissingController.new(error.message, error.name)
+            ^^^^^:
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 16:58:38 -0500
+Processing by ArtworksharesController#create as */*
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.0ms | Allocations: 2100)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: artwork_share:
+  app/controllers/artworkshares_controller.rb:12:in `artwork_share_params'
+  app/controllers/artworkshares_controller.rb:3:in `create'
+
+Started POST "/artworkshares" for ::1 at 2023-02-16 16:59:30 -0500
+Processing by ArtworksharesController#create as */*
+  Parameters: {"artwork_share"=>{"artwork_id"=>"2", "viewer_id"=>"4"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mArtwork Load (0.6ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mArtworkShare Create (1.6ms)[0m  [1m[32mINSERT INTO "artwork_shares" ("artwork_id", "viewer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["artwork_id", 2], ["viewer_id", 4], ["created_at", "2023-02-16 21:59:30.783955"], ["updated_at", "2023-02-16 21:59:30.783955"]]
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/artworkshares_controller.rb:4:in `create'
+Completed 200 OK in 66ms (Views: 1.0ms | ActiveRecord: 24.1ms | Allocations: 20995)
+
+
