@@ -10,11 +10,19 @@
 #  updated_at :datetime         not null
 #
 class Artwork < ApplicationRecord
-validates :title, uniqueness: { scope: :author_id, message: "author has work by this title already"}
+validates :title, uniqueness: { scope: :artist_id, message: "artist has work by this title already"}
 
 	belongs_to :artist, 
 		class_name: :User, 
 		foreign_key: :artist_id
 
-		
+	has_many :artwork_shares,
+		primary_key: :id,
+		class_name: :ArtworkShare,
+		foreign_key: :artwork_id
+
+	has_many :shared_viewers,
+		through: :artwork_shares,
+		source: :viewer
+	
 end
