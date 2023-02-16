@@ -10,5 +10,9 @@
 class User < ApplicationRecord
     validates :name, uniqueness: true, presence: true
     
+	has_many :artworks, 
+		class_name: :artwork, 
+		add_foreign_key: :artist_id,
+		inverse_of: :artist
     
 end
