@@ -1,7 +1,11 @@
 class ArtworksController < ApplicationController
     #let's go!
     def index
+		if params[:user_id]
+			render json: Artwork.joins("users ON artworks.artist_id = users.id").where(artist_id: {id: params[:id]}).select("artworks.*")
+		else
         render json: Artwork.all
+		end
     end
 
 	def create
