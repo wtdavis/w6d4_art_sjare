@@ -14,7 +14,8 @@ validates :title, uniqueness: { scope: :artist_id, message: "artist has work by 
 
 	belongs_to :artist, 
 		class_name: :User, 
-		foreign_key: :artist_id
+		foreign_key: :artist_id,
+		primary_key: :id
 
 	has_many :artwork_shares,
 		primary_key: :id,

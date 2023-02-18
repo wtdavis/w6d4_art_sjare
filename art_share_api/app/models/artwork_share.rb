@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class ArtworkShare < ApplicationRecord
-    validates :viewer_id, uniqueness: {scope: :artist_id}
+    validates :viewer_id, uniqueness: {scope: :artwork_id}
     belongs_to :artwork,
         primary_key: :id,
         foreign_key: :artwork_id,

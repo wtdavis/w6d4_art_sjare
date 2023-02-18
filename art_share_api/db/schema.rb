@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_193139) do
     t.index ["artist_id", "title"], name: "index_artworks_on_artist_id_and_title", unique: true
     t.index ["title"], name: "index_artworks_on_title"
   end
-  
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
